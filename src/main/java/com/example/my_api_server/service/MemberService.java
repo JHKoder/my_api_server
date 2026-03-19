@@ -33,8 +33,7 @@ public class MemberService {
         return memberId;
     }
 
-
-    @T
+    
     public void dbTest() {
 
         //비지니스 로직

@@ -3,23 +3,22 @@ package com.example.my_api_server.config;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 
 @Component
-
+@Aspect
 @Slf4j
 public class LogAspect {
 
     //메서드 실행 하면 시간을 찍어볼게요
     @Around("execution(* com.example.my_api_server.service..*(..))")
-    public Object logging(ProceedingJoinPoint joinPoint) {
+    public Object logging(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
 
         try {
             return joinPoint.proceed();
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
         } finally {
             long endTime = System.currentTimeMillis();
             log.info(joinPoint.getSignature() + " AOP 잘됫나?: " + (endTime - startTime) + "ms");
