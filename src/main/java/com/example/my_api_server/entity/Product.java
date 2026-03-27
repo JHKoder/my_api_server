@@ -27,7 +27,7 @@ public class Product { //상품
 
     private String productName; //상품명
 
-    private String productNumber; //상품번호
+    private String productNumber; //상품번호(SHIRT-RED-001)
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -36,6 +36,7 @@ public class Product { //상품
     private Long price; //가격
 
     private Long stock; //재고
+
 
     //필요한건만 바꿀수있게 Setter처럼 변경할수 있게하고, 네이밍은 의미있는 메서드로 만들어둡니다.
     public void changeProductName(String changeProductName) {

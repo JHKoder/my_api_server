@@ -1,6 +1,7 @@
 package com.example.my_api_server.service;
 
 import com.example.my_api_server.entity.Member;
+import com.example.my_api_server.event.MemberSignUpEvent;
 import com.example.my_api_server.repo.MemberDBRepo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class MemberPointService {
     private final MemberDBRepo memberDBRepo;
 
 
-    //새로운 트랜잭션을 만들겟다!
+    //새로운 트랜잭션을 만들겟다!(REQUIRES_NEW)
     //AOP가 실행되면서 이러한 옵션값을 설정해서 트랜잭션을 생성합니다 begin
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public void changeAllUserData() {
@@ -27,4 +28,27 @@ public class MemberPointService {
         //뭔가 값을 바꿧다고 가정해보겟습니다.
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public void supportTxTest() {
+        //db를 사용하지 않는 단순 자바 코드 실행하거나 혹은 readonly=true 주로 최적화된 읽기를 사용할떄 가끔..
+        memberDBRepo.findAll();
+    }
+
+    //timeout은 트랜잭션의 총 실행시간을 제한, 시간 범위 내에서 총 실행시간 걸린다면 예외가 발생
+    @Transactional(timeout = 2)
+    public void timeout() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        memberDBRepo.findAll();
+    }
+
+    public String sendEmail(MemberSignUpEvent event, Long serialID) {
+
+        //코드가 변경됬습니다
+        //알림보내는데 기타 로직이
+        return -1;
+    }
 }

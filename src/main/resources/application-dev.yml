@@ -2,7 +2,7 @@
 #  port: 8081
 logging:
   level:
-    root: DEBUG
+    root: INFO
     org.springframework.transaction: DEBUG #spring 트랜잭션 매니저 로그
     org.springframework.orm.jpa.JpaTransactionManager: DEBUG #JPA 연동 트랜잭션 매니저 클래스의 로그
     org.springframework.orm.jpa: DEBUG #트랜잭션의 시작과 끝 (영속성 컨텍스트 생명주기)
@@ -35,4 +35,4 @@ spring:
     hibernate:
       ddl-auto: update #실무에선 none, validated
     show-sql: true
-    open-in-view: false
+    open-in-view: false #OSIV = false(성능 매우 중요합니다)

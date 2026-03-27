@@ -46,6 +46,7 @@ public class Order {
     //주문(1) <-> 주문상품(여러 상품들) <-> 상품(1)
     @Column(nullable = false)
     private LocalDateTime orderTime; //주문 시간
+    
 
     //양방향 매핑
     public void addOrderProducts(List<OrderProduct> orderProduct) {

@@ -40,7 +40,6 @@ dependencies {
     //AOP
     implementation 'org.springframework.boot:spring-boot-starter-aspectj'
 
-
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
