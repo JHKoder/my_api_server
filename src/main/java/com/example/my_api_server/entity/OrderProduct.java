@@ -1,17 +1,7 @@
 package com.example.my_api_server.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Getter
@@ -19,18 +9,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class OrderProduct { //주문한 상품들
+public class OrderProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //주문(1) <-> 주문상품(여러 상품들) <-> 상품(1)
-    @ManyToOne(fetch = FetchType.LAZY) //FK
-    private Product product; //상품
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY) //FK
-    private Order order; //주문
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 
-    private Long number; //주문 수량
+    private Long number;
+
+
+    private OrderProduct(Order order, Long orderCount, Product product) {
+        this.product = product;
+        this.order = order;
+        this.number = orderCount;
+    }
+
+    public static OrderProduct ofCreate(Order order, Long orderCount, Product product) {
+        return new OrderProduct(order, orderCount, product);
+    }
 }
