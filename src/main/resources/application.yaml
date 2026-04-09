@@ -3,6 +3,6 @@ server:
 
 spring:
   application:
-    name: my_api
+    name: my_app
   profiles: #기본 프로파일 설정
     default: dev

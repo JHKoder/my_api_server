@@ -1,10 +1,12 @@
 package com.example.my_api_server.service.dto;
 
+import com.example.my_api_server.entity.Order;
 import com.example.my_api_server.entity.OrderStatus;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor(staticName = "of")
@@ -17,7 +19,8 @@ public class OrderResponseDto {
 
     private boolean isSuccess; //주문성공 여부
 
-    //주문자
 
-    //주문 기타 정보
+    public static OrderResponseDto ofOrderSuccess(Order order) {
+        return OrderResponseDto.of(order.getOrderTime(), order.getOrderStatus(), true);
+    }
 }

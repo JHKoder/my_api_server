@@ -1,0 +1,39 @@
+### 상품 생성 API (POST /api/v1/products)
+
+POST http://localhost:8082/api/v1/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productName": "상품 1",
+  "productNumber": "001",
+  "productType": "CLOTHES",
+  "price": 1890000,
+  "stock": 10000000000000
+}
+### 상품 생성 API (POST /api/v1/products)
+
+POST http://localhost:8082/api/v1/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productName": "상품 2",
+  "productNumber": "002",
+  "productType": "CLOTHES",
+  "price": 1890000,
+  "stock": 10000000000000
+}
+### 상품 생성 API (POST /api/v1/products)
+
+POST http://localhost:8082/api/v1/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productName": "상품 3",
+  "productNumber": "003",
+  "productType": "CLOTHES",
+  "price": 1890000,
+  "stock": 1000000000000
+}

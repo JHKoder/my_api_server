@@ -1,0 +1,10 @@
+### 유저 생성
+
+POST http://localhost:8082/api/v1/member
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "test@test.com",
+  "password": "qwerqwer"
+}
