@@ -21,12 +21,6 @@ spring:
     activate:
       on-profile: test # 내이름은 xxx이다.(파일 이름 명시)
 
-#  datasource: #DB 접속정보 관리
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://localhost:5432/my_api
-#    username: sa
-#    password: sa
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
